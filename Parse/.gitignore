@@ -3,5 +3,5 @@
 *_pb2.py
 *_pb2.pyc
 *.csv
-*.log
+*.log*
 

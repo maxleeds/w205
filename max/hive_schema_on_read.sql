@@ -1,4 +1,4 @@
-DROP TABLE schedules;
+DROP TABLE stations;
 
 CREATE EXTERNAL TABLE stations
 (
@@ -23,5 +23,24 @@ WITH SERDEPROPERTIES (
  "escapeChar" = '\\'
 )
 STORED AS TEXTFILE
-LOCATION '/user/w205/mtastatic/stationsfinal.csv'
+LOCATION '/user/w205/mtastatic/stations
+;
+
+DROP TABLE complexes;
+
+CREATE EXTERNAL TABLE complexes
+(
+	complex_id string,
+	complex_name string,
+)
+
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+ "separatorChar" = ',',
+ "quoteChar" = '"',
+
+ "escapeChar" = '\\'
+)
+STORED AS TEXTFILE
+LOCATION '/user/w205/mtastatic/complexes
 ;

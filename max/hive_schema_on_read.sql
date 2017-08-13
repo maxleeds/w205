@@ -31,7 +31,7 @@ DROP TABLE complexes;
 CREATE EXTERNAL TABLE complexes
 (
 	complex_id string,
-	complex_name string,
+	complex_name string
 )
 
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'

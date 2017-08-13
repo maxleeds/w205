@@ -6,7 +6,7 @@ CREATE EXTERNAL TABLE stations
 	complex_id string,
 	gtfs_stop_id string,
 	division string,
-	line string,
+	line_numb string,
 	stop_name string,
 	borough string,
 	daytime_routes string,

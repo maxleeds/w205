@@ -23,7 +23,7 @@ WITH SERDEPROPERTIES (
  "escapeChar" = '\\'
 )
 STORED AS TEXTFILE
-LOCATION '/user/w205/mtastatic/stations
+LOCATION '/user/w205/mtastatic/stations'
 ;
 
 DROP TABLE complexes;
@@ -42,5 +42,5 @@ WITH SERDEPROPERTIES (
  "escapeChar" = '\\'
 )
 STORED AS TEXTFILE
-LOCATION '/user/w205/mtastatic/complexes
+LOCATION '/user/w205/mtastatic/complexes'
 ;

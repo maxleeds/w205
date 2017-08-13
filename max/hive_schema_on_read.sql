@@ -1,6 +1,6 @@
 DROP TABLE schedules;
 
-CREATE EXTERNAL TABLE schedules
+CREATE EXTERNAL TABLE stations
 (
 	station_id string,
 	complex_id string,

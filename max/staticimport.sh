@@ -14,7 +14,7 @@ hdfs dfs -mkdir /user/w205/mtastatic/stations
 hdfs dfs -put stationsfinal.csv /user/w205/mtastatic/stations
 
 # import static list of complexes
-url1="http://web.mta.info/developers/data/nyct/subway/Stations.csv"
+url1="http://web.mta.info/developers/data/nyct/subway/StationComplexes.csv"
 wget $url1 -O complexes.csv
 tail -n +2 complexes.csv > complexesfinal.csv
 hdfs dfs -mkdir /user/w205/mtastatic/complexes

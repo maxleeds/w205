@@ -55,8 +55,8 @@ CREATE EXTERNAL TABLE historicturnstile
 	station string,
 	linename string,
 	divisiom string,
-	date string,
-	time string,
+	date_val string,
+	time_val string,
 	description string,
 	entries string,
 	exits string

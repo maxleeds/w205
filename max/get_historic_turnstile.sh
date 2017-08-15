@@ -9,3 +9,6 @@ do
 	tail -n +2 $x > $x
 done
 
+cat * > finalturnstile.txt
+hdfs dfs -mkdir /user/w205/mtastatic/turnstilehistoric
+hdfs dfs -put finalturnstile.txt /user/w205/mtastatic/turnstilehistoric

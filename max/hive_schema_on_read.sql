@@ -71,5 +71,5 @@ WITH SERDEPROPERTIES (
  "escapeChar" = '\\'
 )
 STORED AS TEXTFILE
-LOCATION '/user/w205/mtastatic/turnstile'
+LOCATION '/user/w205/mtastatic/turnstilehistoric'
 ;

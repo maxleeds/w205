@@ -1,0 +1,16 @@
+parse_gtfsrt.py parses GTFS-RT updates into CSV files. It requires:
+
+(Ensure python comes from anaconda2 in your PATH variable. 
+To install protoc under Centos, i.e. w205 instance, follow
+instructions here: http://tech.yipp.ca/linux/install-google-protocol-buffers-linux/
+
+To install python bindings, also run "conda install protobuf")
+
+shell> protoc --python_out=./ gtfs-realtime.proto
+shell> protoc --python_out=./ nyct-subway.proto
+shell> export MTA_KEY=<your key>
+shell> ./parse_gtfsrt.py
+
+Some notes on interpretation of fields (check *.proto files):
+
+schedule_relationship: SCHEDULED=0, ADDED=1, UNSCHEDULED=2, CANCELLED=3

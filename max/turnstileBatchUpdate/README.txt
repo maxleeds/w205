@@ -1,1 +1,3 @@
 Batch Update for Turnstile Data
+
+MUST HAVE ALREADY ADDED HISTORICAL DATA TO HDFS!

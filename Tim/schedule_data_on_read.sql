@@ -14,7 +14,7 @@ drop_off_type string,
 shape_dist_traveled string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION '/user/w205/final_project_test/stop_times/';
+LOCATION '/user/w205/staging/stop_times/';
 
 DROP TABLE stopsdata;
 
@@ -31,4 +31,4 @@ location_type string,
 parent_station string)
 ROW FORMAT delimited fields terminated by ','
 STORED AS TEXTFILE
-LOCATION '/user/w205/final_project_test/stops/';
+LOCATION '/user/w205/staging/stops/';

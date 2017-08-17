@@ -80,12 +80,12 @@ for entity in feed.entity:
                                                            str(entity.trip_update.trip.Extensions[nyct_subway_pb2.nyct_trip_descriptor].train_id),
                                                            str(entity.trip_update.trip.Extensions[nyct_subway_pb2.nyct_trip_descriptor].is_assigned),
                                                            str(entity.trip_update.trip.Extensions[nyct_subway_pb2.nyct_trip_descriptor].direction)))
-              logger.debug('Timestamp = {}'.format(str(entity.trip_update.timestamp)))
+              logger.debug('Timestamp = {0}'.format(str(entity.trip_update.timestamp)))
               for stop_time_update in entity.trip_update.stop_time_update:
-                  logger.debug("Stop Time Update: stop_sequence={}, stop_id={}, arrival.delay={},\
-                                                  arrival.uncertainty={},departure.delay={},\
-                                                  departure.uncertainty={},schedule_relationship_update={},scheduled_track={},\
-                                                  actual_track={}".format(
+                  logger.debug("Stop Time Update: stop_sequence={0}, stop_id={1}, arrival.delay={2},\
+                                                  arrival.uncertainty={3},departure.delay={4},\
+                                                  departure.uncertainty={5},schedule_relationship_update={6},scheduled_track={7},\
+                                                  actual_track={8}".format(
                                                          str(stop_time_update.stop_sequence),
                                                          str(stop_time_update.stop_id),
                                                          str(stop_time_update.arrival.delay),
@@ -117,9 +117,9 @@ for entity in feed.entity:
                   csvwriter1.writerow(Row)
                   Row[:]=[]
        if entity.HasField('vehicle'):
-              logger.debug("Trip Descriptor: trip_id={},route_id={},direction_id={},start_time={},\
-                                             start_date={},schedule_relationship={},train_id={},\
-                                             is_assigned={},direction={}".format(
+              logger.debug("Trip Descriptor: trip_id={0},route_id={1},direction_id={2},start_time={3},\
+                                             start_date={4},schedule_relationship={5},train_id={6},\
+                                             is_assigned={7},direction={8}".format(
                                                            str(entity.vehicle.trip.trip_id),
                                                            str(entity.vehicle.trip.route_id),
                                                            str(entity.vehicle.trip.direction_id),

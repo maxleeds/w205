@@ -133,12 +133,12 @@ for entity in feed.entity:
                            % (entity.vehicle.position.latitude, entity.vehicle.position.longitude, \
                               entity.vehicle.position.bearing, entity.vehicle.position.odometer, \
                               entity.vehicle.position.speed))
-              logger.debug("Current Stop Sequence: {}".format(str(entity.vehicle.current_stop_sequence)))
-              logger.debug("Current Stop id: {}".format(str(entity.vehicle.stop_id)))
-              logger.debug("Stop Status: {}".format(str(entity.vehicle.current_status)))
-              logger.debug("Timestamp: {}".format(str(entity.vehicle.timestamp)))
-              logger.debug("Congestion Level: {}".format(str(entity.vehicle.congestion_level)))              
-              logger.debug("Occupancy Status: {}".format(str(entity.vehicle.occupancy_status)))
+              logger.debug("Current Stop Sequence: {0}".format(str(entity.vehicle.current_stop_sequence)))
+              logger.debug("Current Stop id: {0}".format(str(entity.vehicle.stop_id)))
+              logger.debug("Stop Status: {0}".format(str(entity.vehicle.current_status)))
+              logger.debug("Timestamp: {0}".format(str(entity.vehicle.timestamp)))
+              logger.debug("Congestion Level: {0}".format(str(entity.vehicle.congestion_level)))              
+              logger.debug("Occupancy Status: {0}".format(str(entity.vehicle.occupancy_status)))
               Row.append(str(entity.vehicle.trip.trip_id))
               Row.append(str(entity.vehicle.trip.route_id))
               Row.append(str(entity.vehicle.trip.direction_id))

@@ -11,7 +11,7 @@ import os
 # Get the MTA key from the environment
 
 MTA_KEY = os.environ['MTA_KEY']
-MTA_URL = "http://datamine.mta.info/mta_esi.php?key={}&feed_id=1".format(MTA_KEY)
+MTA_URL = "http://datamine.mta.info/mta_esi.php?key={0}&feed_id=1".format(MTA_KEY)
 
 # CSV output files
 trips = open('./trip_update.csv', 'w') 
@@ -41,7 +41,7 @@ try:
 except urllib.error.URLError as e:
        print e.reason
 
-logger.debug("Response Code = {}".format(str(response.code)))
+logger.debug("Response Code = {0}".format(str(response.code)))
 
 # Parse NYCT feed. 
 feed.ParseFromString(response.read())
@@ -64,13 +64,13 @@ csvwriter1.writerow(header_trip_update)
 csvwriter2.writerow(header_vehicle_position)
 
 if feed.header.HasField('timestamp'):
-    logger.debug("TripHeader timestamp is {}\n".format(str(feed.header.timestamp)))
+    logger.debug("TripHeader timestamp is {0}\n".format(str(feed.header.timestamp)))
 
 for entity in feed.entity:
        if entity.HasField('trip_update'):
-              logger.debug("Trip Descriptor: trip_id={},route_id={},direction_id={},\
-                                             start_time={},start_date={},schedule_relationship={},\
-                                             train_id={},is_assigned={},direction={}".format(
+              logger.debug("Trip Descriptor: trip_id={0},route_id={1},direction_id={2},\
+                                             start_time={3},start_date={4},schedule_relationship={5},\
+                                             train_id={6},is_assigned={7},direction={8}".format(
                                                            str(entity.trip_update.trip.trip_id),
                                                            str(entity.trip_update.trip.route_id),
                                                            str(entity.trip_update.trip.direction_id),

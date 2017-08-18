@@ -8,4 +8,4 @@ wget $url -O $x
 tail -n +2 $x > $x.final
 rm $x
 
-hdfs dfs -put finalturnstile.txt /user/w205/mtastatic/newturnstile
+hdfs dfs -put $x.final /user/w205/mtastatic/newturnstile

@@ -25,3 +25,10 @@ WITH SERDEPROPERTIES (
 )
 STORED AS TEXTFILE
 LOCATION '/user/w205/mtastatic/newturnstile'
+
+DROP TABLE allturnstile;
+
+CREATE TABLE allturnstile AS
+Select * FROM newturnstile
+UNION ALL
+SELECT * FROM historicturnstile;

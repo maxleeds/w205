@@ -4,5 +4,6 @@ chmod u+x,g+x get_historic_turnstile.sh
 
 cd turnstileBatchUpdate
 chmod u+x,g+x new_turnstile_week.sh
+chmod u+x,g+x append_turnstile.sql
 
 cd ..

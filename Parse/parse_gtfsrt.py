@@ -29,7 +29,7 @@ LEVEL = logging.DEBUG
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)  
 logger.setLevel(LEVEL)
-handler = logging.handlers.RotatingFileHandler('parse_gtfsrt.log', maxBytes=2000000, backupCount=1)  
+handler = logging.handlers.RotatingFileHandler('parse_gtfsrt.log', maxBytes=2000000, backupCount=0)  
 handler.setLevel(LEVEL)  
 handler.setFormatter(formatter)
 logger.addHandler(handler)

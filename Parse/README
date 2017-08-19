@@ -1,5 +1,5 @@
 The scripts in this directory have been tested on the w205 Spring AMI
-and anaconda2. 
+with anaconda2 python. 
 
 parse_gtfsrt.py parses GTFS-RT updates into CSV files. 
 

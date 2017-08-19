@@ -61,7 +61,7 @@ class Tweets(Spout):
 
         # Create the stream and listen for english tweets
         stream = tweepy.Stream(auth, listener, timeout=None)
-        stream.filter(languages=["en"], async=True, track=["subway","nyc"])
+        stream.filter(languages=["en"], async=True, track=["nyc subway"])
 
     def queue(self):
         return self._queue

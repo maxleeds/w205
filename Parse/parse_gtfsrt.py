@@ -49,8 +49,8 @@ feed.ParseFromString(response.read())
 # Headers for CSV output. 
 header_trip_update = ('trip_id', 'route_id', 'direction_id', 'start_time', 'start_date', \
                       'schedule_relationship', 'train_id', 'is_assigned', 'direction', \
-                      'stop_sequence', 'stop_id', 'arrival_delay','arrival_uncertainty',\
-                      'departure_delay','departure_uncertainty','schedule_relationship_update',\
+                      'stop_sequence', 'stop_id', 'arrival_delay','arrival_time','arrival_uncertainty',\
+                      'departure_delay','departure_time','departure_uncertainty','schedule_relationship_update',\
                       'scheduled_track','actual_track','timestamp')
 header_vehicle_position = ('trip_id','route_id','direction_id','start_time','start_date',\
                            'schedule_relationship','train_id','is_assigned','direction',\
@@ -83,14 +83,16 @@ for entity in feed.entity:
               logger.debug('Timestamp = {0}'.format(str(entity.trip_update.timestamp)))
               for stop_time_update in entity.trip_update.stop_time_update:
                   logger.debug("Stop Time Update: stop_sequence={0}, stop_id={1}, arrival.delay={2},\
-                                                  arrival.uncertainty={3},departure.delay={4},\
-                                                  departure.uncertainty={5},schedule_relationship_update={6},scheduled_track={7},\
-                                                  actual_track={8}".format(
+                                                  arrival.time={3},arrival.uncertainty={4},departure.delay={5},departure.time={6},\
+                                                  departure.uncertainty={7},schedule_relationship_update={8},scheduled_track={9},\
+                                                  actual_track={10}".format(
                                                          str(stop_time_update.stop_sequence),
                                                          str(stop_time_update.stop_id),
                                                          str(stop_time_update.arrival.delay),
+                                                         str(stop_time_update.arrival.time),
                                                          str(stop_time_update.arrival.uncertainty),
                                                          str(stop_time_update.departure.delay),
+                                                         str(stop_time_update.departure.time),
                                                          str(stop_time_update.departure.uncertainty),
                                                          str(stop_time_update.schedule_relationship),
                                                          str(stop_time_update.Extensions[nyct_subway_pb2.nyct_stop_time_update].scheduled_track),
@@ -107,8 +109,10 @@ for entity in feed.entity:
                   Row.append(str(stop_time_update.stop_sequence))
                   Row.append(str(stop_time_update.stop_id))
                   Row.append(str(stop_time_update.arrival.delay))
+                  Row.append(str(stop_time_update.arrival.time))
                   Row.append(str(stop_time_update.arrival.uncertainty))
                   Row.append(str(stop_time_update.departure.delay))
+                  Row.append(str(stop_time_update.departure.time))
                   Row.append(str(stop_time_update.departure.uncertainty))
                   Row.append(str(stop_time_update.schedule_relationship))
                   Row.append(str(stop_time_update.Extensions[nyct_subway_pb2.nyct_stop_time_update].scheduled_track))

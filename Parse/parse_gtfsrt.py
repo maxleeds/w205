@@ -46,15 +46,15 @@ logger.debug("Response Code = {0}".format(str(response.code)))
 # Parse NYCT feed. 
 feed.ParseFromString(response.read())
 
-# Headers for CSV output. 
-header_trip_update = ('trip_id', 'route_id', 'direction_id', 'start_time', 'start_date', \
-                      'schedule_relationship', 'train_id', 'is_assigned', 'direction', \
-                      'stop_sequence', 'stop_id', 'arrival_delay','arrival_time','arrival_uncertainty',\
+# Headers for CSV output.
+trip_descriptor = ('trip_id', 'route_id', 'direction_id', 'start_time', 'start_date', \
+                      'schedule_relationship', 'train_id', 'is_assigned', 'direction')
+
+header_trip_update = trip_descriptor + ('stop_sequence', 'stop_id', 'arrival_delay','arrival_time','arrival_uncertainty',\
                       'departure_delay','departure_time','departure_uncertainty','schedule_relationship_update',\
                       'scheduled_track','actual_track','timestamp')
-header_vehicle_position = ('trip_id','route_id','direction_id','start_time','start_date',\
-                           'schedule_relationship','train_id','is_assigned','direction',\
-                           'position_latitude','position_longitude',\
+
+header_vehicle_position = trip_descriptor + ('position_latitude','position_longitude',\
                            'position_bearing','position_odometer','position_speed',\
                            'current_stop_sequence','stop_id','stop_status','timestamp',\
                            'congestion_level','occupancy_status')              

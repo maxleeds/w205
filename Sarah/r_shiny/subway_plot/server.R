@@ -19,7 +19,7 @@ shinyServer(function(input, output, session) {
   
   # Region select input box
   part_choices <- reactive({
-    as.list(c(1L, 2L, 3L, 4L))
+    as.list(c(1L, 2L, 3L, 4L), names = c('Lower Manhattan', "Midtown", "Upper Manhattan", "Bronx"))
   })
   
   observe({

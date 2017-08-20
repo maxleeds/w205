@@ -11,10 +11,17 @@ library(shinydashboard)
 library(leaflet)
 
 header <- dashboardHeader(
-  title = "NYC Subway Station Traffic Tracker"
+  title = "NYC Subway Station Traffic Tracker",
+  titleWidth = 550
 )
-
 body <- dashboardBody(
+  tags$head(tags$style(HTML('
+      .main-header .logo {
+                            font-family: "Georgia", Times, "Times New Roman", serif;
+                            font-weight: bold;
+                            font-size: 16px;
+                            }
+                            '))), 
   fluidRow(
     column(width = 9,
            box(width = NULL, solidHeader = TRUE,
@@ -58,7 +65,8 @@ body <- dashboardBody(
 dashboardPage(
   header,
   dashboardSidebar(disable = TRUE),
-  body
+  body,
+  skin = 'blue'
 )
 
 

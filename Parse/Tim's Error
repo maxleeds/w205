@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "./parse_gtfsrt.py", line 3, in <module>
+    import gtfs_realtime_pb2
+  File "/home/w205/w205/Parse/gtfs_realtime_pb2.py", line 6, in <module>
+    from google.protobuf import descriptor as _descriptor
+ImportError: No module named google.protobuf

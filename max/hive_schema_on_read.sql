@@ -45,9 +45,9 @@ STORED AS TEXTFILE
 LOCATION '/user/w205/mtastatic/complexes'
 ;
 
-DROP TABLE historicturnstile;
+DROP TABLE allturnstile;
 
-CREATE EXTERNAL TABLE historicturnstile
+CREATE EXTERNAL TABLE allturnstile
 (
 	c_a string,
 	unit string,

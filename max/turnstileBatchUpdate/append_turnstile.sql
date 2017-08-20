@@ -26,9 +26,9 @@ WITH SERDEPROPERTIES (
 STORED AS TEXTFILE
 LOCATION '/user/w205/mtastatic/newturnstile'
 
-DROP TABLE allturnstile;
+AlTER TABLE allturnstile RENAME TO oldturnstile;
 
 CREATE TABLE allturnstile AS
 Select * FROM newturnstile
 UNION ALL
-SELECT * FROM historicturnstile;
+SELECT * FROM oldturnstile;

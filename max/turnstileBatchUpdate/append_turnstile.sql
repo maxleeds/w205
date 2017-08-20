@@ -32,3 +32,5 @@ CREATE TABLE allturnstile AS
 Select * FROM newturnstile
 UNION ALL
 SELECT * FROM oldturnstile;
+
+DROP oldturnstile;

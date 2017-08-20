@@ -22,4 +22,18 @@ Once you have tested parse_gtfsrt.py works ok:
 2. execute ./gtfsrt_updates.sh from the same directory as ./parse_gtfsrt.py
    
 
+Additional notes on parse_gtfsrt.py:
 
+1. Basic support for arrival and departure delay jitter. 
+
+2. Options are (in order of priority so use only one of them at a time):
+   
+   -dp:  Adds different amounts of positive jitter to arrival and departure times. 
+   -dps: Adds the same amount of random jitter to arrival and departure times. 
+   -dn:  Adds different amounts of negative jitter to arrival and departure times. 
+   -dns: Adds same amount amount of negative jitter to arrival and departure times. 
+   -dm:  Adds different amounts of positive or negative jitter to train times.  
+
+3. You can change the bounds on jitter by changing the value of MAX_JITTER at the top of 
+   the parse_gtfsrt.py script. Sorry, i should support a command line option for this, but no
+   time. It is currently set to 60 secs. 

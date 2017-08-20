@@ -7,8 +7,45 @@ import csv
 import logging
 import logging.handlers
 import os
+from random import randint
+import sys
 
-# Get the MTA key from the environment
+# Set max jitter in secs. Need to support this on command line. 
+MAX_JITTER = 60
+
+
+# Get arguments.
+add_pos_jitter = False
+add_same_pos_jitter = False
+add_neg_jitter = False
+add_same_neg_jitter = False
+add_mixed_jitter = False
+fixed_pos_jitter = randint(0,MAX_JITTER)
+fixed_neg_jitter = -abs(randint(0,MAX_JITTER))
+
+if len(sys.argv) > 1:
+       for index,arg in enumerate(sys.argv):
+              if index != 0:
+                     if arg == "-dp":
+                            add_pos_jitter = True
+                            print "Adding different amounts (0 to {0} secs) of random positive jitter to train times".format(MAX_JITTER)
+                     elif arg == "-dps":
+                            add_same_pos_jitter = True
+                            print "Adding the same amount (0 to {0} secs) of random positive jitter to train times".format(MAX_JITTER)
+                     elif arg == "-dn":
+                            add_neg_jitter = True
+                            print "Adding different amounts (0 to {0} secs) of random negative jitter to train times".format(MAX_JITTER)
+                     elif arg == "-dns":
+                            add_same_neg_jitter = True
+                            print "Adding the same amount (0 to {0} secs) of random negative jitter to train times".format(MAX_JITTER)
+                     elif arg == "-dm":
+                            add_mixed_jitter = True
+                            print "Adding random amounts (0 to {0} secs) of positive and negative jitter to train times".format(MAX_JITTER)
+                     # skipping same amount of random +ve/-ve jitter
+                     # skipping bounds on jitter. right now fixing to between 0 and 10 minutes. 
+                     else:
+                            print "Unknown command line option. Exiting"
+                            sys.exit()
 
 MTA_KEY = os.environ['MTA_KEY']
 MTA_URL = "http://datamine.mta.info/mta_esi.php?key={0}&feed_id=1".format(MTA_KEY)
@@ -108,11 +145,45 @@ for entity in feed.entity:
                   Row.append(str(entity.trip_update.trip.Extensions[nyct_subway_pb2.nyct_trip_descriptor].direction))
                   Row.append(str(stop_time_update.stop_sequence))
                   Row.append(str(stop_time_update.stop_id))
-                  Row.append(str(stop_time_update.arrival.delay))
-                  Row.append(str(stop_time_update.arrival.time))
+                  
+                  if (add_pos_jitter == True):
+                      arrjitter = randint(0,MAX_JITTER)
+                  elif (add_same_pos_jitter == True):
+                      arrjitter = fixed_pos_jitter
+                  elif (add_neg_jitter == True):
+                      arrjitter = -abs(randint(0,MAX_JITTER))
+                  elif (add_same_neg_jitter == True):
+                      arrjitter = fixed_neg_jitter
+                  elif (add_mixed_jitter == True):
+                      if(randint(0,2) > 0):
+                          arrjitter = randint(0,MAX_JITTER)
+                      else:
+                          arrjitter = -abs(randint(0,MAX_JITTER))
+                  else:
+                         arrjitter = 0
+                                    
+                  Row.append(str(stop_time_update.arrival.delay + arrjitter))                         
+                  Row.append(str(stop_time_update.arrival.time + arrjitter))
                   Row.append(str(stop_time_update.arrival.uncertainty))
-                  Row.append(str(stop_time_update.departure.delay))
-                  Row.append(str(stop_time_update.departure.time))
+                  
+                  if (add_pos_jitter == True):
+                      depjitter = randint(0,MAX_JITTER)
+                  elif (add_same_pos_jitter == True):
+                      depjitter = fixed_pos_jitter
+                  elif (add_neg_jitter == True):
+                      depjitter = -abs(randint(0,MAX_JITTER))
+                  elif (add_same_neg_jitter == True):
+                      depjitter = fixed_neg_jitter
+                  elif (add_mixed_jitter == True):
+                      if(randint(0,2) > 0):
+                          depjitter = randint(0,MAX_JITTER)
+                      else:
+                          depjitter = -abs(randint(0,MAX_JITTER))
+                  else:
+                         depjitter = 0
+                         
+                  Row.append(str(stop_time_update.departure.delay + depjitter))
+                  Row.append(str(stop_time_update.departure.time + depjitter))
                   Row.append(str(stop_time_update.departure.uncertainty))
                   Row.append(str(stop_time_update.schedule_relationship))
                   Row.append(str(stop_time_update.Extensions[nyct_subway_pb2.nyct_stop_time_update].scheduled_track))

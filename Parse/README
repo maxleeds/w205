@@ -16,7 +16,7 @@ shell> ./parse_gtfsrt.py
 Once you have tested parse_gtfsrt.py works ok:
 
 
-1. execute ./hive_ddl.sql. It creates tables in the default database in hive 
+1. execute hive -f ./hive_ddl.sql. It creates tables in the default database in hive 
    and assumes the directory structure to be /user/w205/mta/trip_update/ etc.
 
 2. execute ./gtfsrt_updates.sh from the same directory as ./parse_gtfsrt.py

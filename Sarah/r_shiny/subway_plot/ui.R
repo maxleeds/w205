@@ -7,20 +7,58 @@
 #    http://shiny.rstudio.com/
 #
 
-library(shiny)
+library(shinydashboard)
+library(leaflet)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
-  
-  # Application title
-  titlePanel("Subway Data"),
-  
-  #selectInput(inputId = "city",
-   #           label = "City of interest:",
-    #          choices = c("NYC"),
-   #           selected = "NYC"),
-    
-  # Show a plot of the generated distribution
-  leafletOutput("map")
+header <- dashboardHeader(
+  title = "NYC Subway Station Traffic Tracker"
+)
 
-))
+body <- dashboardBody(
+  fluidRow(
+    column(width = 9,
+           box(width = NULL, solidHeader = TRUE,
+               leafletOutput("subwaymap", height = 500)
+           ),
+           box(width = NULL,
+               uiOutput("stationMetrics")
+           )
+    ),
+    column(width = 3,
+           box(width = NULL, status = "warning",
+               selectInput("region", label= "Region", choices = "1", selected = "1"),
+               p(
+                 class = "text-muted",
+                 paste("Note: please only select one region."
+                 )
+               )
+           ),
+           box(width = NULL, status = "warning",
+               selectInput("interval", "Refresh interval",
+                           choices = c(
+                             "30 seconds" = 30,
+                             "1 minute" = 60,
+                             "2 minutes" = 120,
+                             "5 minutes" = 300,
+                             "10 minutes" = 600
+                           ),
+                           selected = "60"
+               ),
+               uiOutput("timeSinceLastUpdate"),
+               actionButton("refresh", "Refresh now"),
+               p(class = "text-muted",
+                 br(),
+                 "Source data updates every 30 seconds."
+               )
+           )
+    )
+  )
+)
+
+dashboardPage(
+  header,
+  dashboardSidebar(disable = TRUE),
+  body
+)
+
+

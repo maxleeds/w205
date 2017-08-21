@@ -1,3 +1,5 @@
+mkdir /data/tim/w205/Parse/Output
+
 wget "http://web.mta.info/developers/data/nyct/subway/google_transit.zip"
 unzip google_transit.zip
 

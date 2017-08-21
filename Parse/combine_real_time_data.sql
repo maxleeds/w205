@@ -35,15 +35,6 @@ WHEN from_unixtime(cast(arrival_time as int)-4*60*60,'u') = 6 THEN 6
 WHEN from_unixtime(cast(arrival_time as int)-4*60*60,'u') = 7 THEN 7 END as week_day_num
 FROM trip_update_serde;
 
-DROP TABLE turnstilestation;
-
-CREATE TABLE turnstilestation as
-SELECT stations.station_id,
-stations.gtfs_stop_id as stop_id,
-allturnstile.unit
-FROM stations 
-INNER JOIN allturnstile ON stations.station_id = allturnstile.station;
-
 DROP TABLE real_time_trip_schedule;
 
 CREATE TABLE real_time_trip_schedule AS

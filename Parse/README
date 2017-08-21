@@ -19,11 +19,11 @@ Once you have tested parse_gtfsrt.py works ok:
 1. execute hive -f ./hive_ddl.sql. It creates tables in the default database in hive 
    and assumes the directory structure to be /user/w205/mta/trip_update/ etc.
    
-2. execute ./import_schedule.sh. It imports the stops and schedule data
+2. execute ./Import_schedule.sh. It imports the stops and schedule data
 
 3. execute hive -f ./schedule_data_on_read.sql. It reads the stops and schedule data into hive.
 
-4. execute hive -f ./combined_stops_schedule.sql. It combines the stops and schedule data.
+4. execute hive -f ./combine_stops_schedule.sql. It combines the stops and schedule data.
 
 5. execute ./gtfsrt_updates.sh from the same directory as ./parse_gtfsrt.py
    

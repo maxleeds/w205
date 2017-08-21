@@ -89,7 +89,8 @@ AND vehicle_position_day.stop_id = real_time_trip_schedule.stop_id;
 DROP TABLE trip_update_final;
 
 CREATE TABLE trip_update_final AS
-SELECT stop_name,
+SELECT stop_id,
+stop_name,
 stop_latitude,
 stop_longitude,
 departure_schedule_delay,

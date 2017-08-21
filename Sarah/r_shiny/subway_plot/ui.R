@@ -25,10 +25,10 @@ body <- dashboardBody(
   fluidRow(
     column(width = 9,
            box(width = NULL, solidHeader = TRUE,
-               leafletOutput("subwaymap", height = 500)
+               leafletOutput("subwaymap", height = 400)
            ),
            box(width = NULL,
-               uiOutput("stationMetrics")
+               uiOutput("stationMetrics", height = 200)
            )
     ),
     column(width = 3,

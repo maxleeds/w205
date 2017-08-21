@@ -13,6 +13,7 @@ do
   hdfs dfs -rm /user/w205/mta/vehicle_position/vehicle_position.csv &> /dev/null
   hdfs dfs -put ./trip_update.csv /user/w205/mta/trip_update
   hdfs dfs -put ./vehicle_position.csv /user/w205/mta/vehicle_position
+  hive -f ./combine_real_time_data.sql
   echo "sleeping for 30s"
   sleep 30s
   let "count=count+1"

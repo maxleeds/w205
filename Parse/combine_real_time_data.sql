@@ -91,7 +91,7 @@ FROM real_time_trip_update
 WHERE departure_schedule_delay > -100000 AND departure_schedule_delay < 100000
 AND arrival_schedule_delay > -100000 AND arrival_schedule_delay < 100000;
 
-INSERT OVERWRITE LOCAL DIRECTORY '/home/w205/w205/Parse' 
+INSERT OVERWRITE LOCAL DIRECTORY '/data/tim/w205/Parse' 
 ROW FORMAT DELIMITED 
 FIELDS TERMINATED BY ',' 
 select * from trip_update_final;

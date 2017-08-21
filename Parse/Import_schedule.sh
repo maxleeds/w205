@@ -1,4 +1,5 @@
 wget "http://web.mta.info/developers/data/nyct/subway/google_transit.zip"
+unzip google_transit_zip
 
 cat stop_times.txt > stop_times.csv
 cat stops.txt > stops.csv

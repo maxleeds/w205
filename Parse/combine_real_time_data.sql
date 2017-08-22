@@ -80,18 +80,22 @@ AND vehicle_position_day.stop_id = real_time_trip_schedule.stop_id;
 DROP TABLE trip_update_final;
 
 CREATE TABLE trip_update_final AS
-SELECT stop_id,
+SELECT real_time_trip_update.stop_id,
 stop_name,
 stop_latitude,
 stop_longitude,
-departure_schedule_delay,
-arrival_schedule_delay,
-position_delay
+CASE WHEN departure_schedule_delay < -80000 THEN departure_schedule_delay + 86400 
+ELSE departure_schedule_delay END as departure_schedule_delay,
+CASE WHEN arrival_schedule_delay < -80000 THEN arrival_schedule_delay + 86400 
+ELSE arrival_schedule_delay END as arrival_schedule_delay,
+position_delay,
+turnstilevolume.volume
 FROM real_time_trip_update
+LEFT JOIN turnstilevolume ON SUBSTR(real_time_trip_update.stop_id,1,3) = turnstilevolume.stop_id
 WHERE departure_schedule_delay > -100000 AND departure_schedule_delay < 100000
 AND arrival_schedule_delay > -100000 AND arrival_schedule_delay < 100000;
 
-INSERT OVERWRITE LOCAL DIRECTORY '/data/tim/w205/Parse' 
+INSERT OVERWRITE LOCAL DIRECTORY '/data/tim/w205/Parse/Output' 
 ROW FORMAT DELIMITED 
 FIELDS TERMINATED BY ',' 
 select * from trip_update_final;

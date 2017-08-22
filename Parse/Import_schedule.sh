@@ -9,9 +9,9 @@ cat stops.txt > stops.csv
 tail -n +2 "stop_times.csv" > "stop_times1.csv"
 tail -n +2 "stops.csv" > "stops1.csv"
 
-hdfs dfs -mkdir /user/w205/staging
-hdfs dfs -mkdir /user/w205/staging/stop_times
-hdfs dfs -mkdir /user/w205/staging/stops
+sudo -u hdfs dfs -mkdir /user/w205/staging
+sudo -u hdfs dfs -mkdir /user/w205/staging/stop_times
+sudo -u hdfs dfs -mkdir /user/w205/staging/stops
 
-hdfs dfs -put stop_times1.csv /user/w205/staging/stop_times
-hdfs dfs -put stops1.csv /user/w205/staging/stops
+sudo -u hdfs dfs -put stop_times1.csv /user/w205/staging/stop_times
+sudo -u hdfs dfs -put stops1.csv /user/w205/staging/stops

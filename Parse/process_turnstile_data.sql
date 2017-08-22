@@ -24,7 +24,7 @@ time
 FROM turnstilestation
 INNER JOIN mintimetable ON mintimetable.mintime = time;
 
-DROP TABLE turnstilefirstotal;
+DROP TABLE turnstilefirsttotal;
 
 CREATE TABLE turnstilefirsttotal AS
 SELECT stop_id,

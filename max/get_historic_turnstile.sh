@@ -14,5 +14,5 @@ do
 done
 
 cat * > finalturnstile.txt
-sudo -u hdfs dfs -mkdir /user/w205/mtastatic/turnstilehistoric
-sudo -u hdfs dfs -put finalturnstile.txt /user/w205/mtastatic/turnstilehistoric
+sudo -u hdfs hdfs dfs -mkdir /user/w205/mtastatic/turnstilehistoric
+sudo -u hdfs hdfs dfs -put finalturnstile.txt /user/w205/mtastatic/turnstilehistoric

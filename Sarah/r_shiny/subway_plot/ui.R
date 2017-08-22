@@ -16,12 +16,20 @@ header <- dashboardHeader(
 )
 body <- dashboardBody(
   tags$head(tags$style(HTML('
-      .main-header .logo {
+                            .main-header .logo {
                             font-family: "Georgia", Times, "Times New Roman", serif;
                             font-weight: bold;
                             font-size: 16px;
                             }
                             '))), 
+  tags$style(type = "text/css", "html, body {width:100%;height:100%}",
+             ".leaflet .legend i{
+             border-radius: 50%;
+             width: 10px;
+             height: 10px;
+             margin-top: 4px;
+             }
+             "),
   fluidRow(
     column(width = 9,
            box(width = NULL, solidHeader = TRUE,
@@ -60,7 +68,7 @@ body <- dashboardBody(
            )
     )
   )
-)
+  )
 
 dashboardPage(
   header,
@@ -68,5 +76,3 @@ dashboardPage(
   body,
   skin = 'blue'
 )
-
-

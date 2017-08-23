@@ -1,7 +1,7 @@
 # w205
 Final Project
 
-Please also READMEs in subdirs. 
+Please also view READMEs in subdirs. 
 
 Base requirements to run this project are:
 

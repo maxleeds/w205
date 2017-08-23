@@ -29,7 +29,8 @@ Once you have tested parse_gtfsrt.py works ok:
 
 6. Update the output path in the last code block in combine_real_time_data.sql, to the same folder that was created in step 2 in the first line of ./Import_schedule.sh. The current path is "/data/tim/w205/Parse/Output" for our demo run, but should be updated to the created empty folder.
 
-7. Update the paths in the ./gtfsrt_updates.sh file in the line 
+7. Update the paths in the ./gtfsrt_updates.sh file in the following line, to incorporate the updated folder:
+"mv /data/tim/w205/Parse/Output/000000_0 /data/tim/w205/Parse/Output/update.csv"
 
 8. After the export path has been updated, execute ./gtfsrt_updates.sh from the same directory as ./parse_gtfsrt.py
    

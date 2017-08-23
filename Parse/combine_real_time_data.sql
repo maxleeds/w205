@@ -95,7 +95,6 @@ LEFT JOIN turnstilevolume ON SUBSTR(real_time_trip_update.stop_id,1,3) = turnsti
 WHERE departure_schedule_delay > -100000 AND departure_schedule_delay < 100000
 AND arrival_schedule_delay > -100000 AND arrival_schedule_delay < 100000;
 
-// Edit the path in the following directory to the folder that was created in Import_schedule.sh
 INSERT OVERWRITE LOCAL DIRECTORY '/data/tim/w205/Parse/Output' 
 ROW FORMAT DELIMITED 
 FIELDS TERMINATED BY ',' 

@@ -20,3 +20,6 @@ Please check your slack channel on how to access AWS instance
 so you may examine project code without having to install various pieces of
 software. (rstudio-server is ccessed as http://dnsname:8787)
 
+Errata: "W205 Final ReportArchitecture.pdf"'s page 3, lists the URL for turnstile
+data instead of for historical real-time updates. The correct link for #4 (Historical GTFS-RT)
+is http://web.mta.info/developers/MTA-Subway-Time-historical-data.html

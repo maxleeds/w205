@@ -6,5 +6,5 @@ rstudio-server hosted on a w205-class AMI.
 
 Please check your slack channel on how to access AWS instance
 so you may examine project code without having to install various pieces of
-software. (rstudio-server port number is 8787)
+software. (rstudio-server is ccessed as http://dnsname:8787)
 

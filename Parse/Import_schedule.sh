@@ -1,3 +1,4 @@
+# Change this first line to a path that you would want the intermediate files to be output to
 mkdir /data/tim/w205/Parse/Output
 
 wget "http://web.mta.info/developers/data/nyct/subway/google_transit.zip"

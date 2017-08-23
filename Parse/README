@@ -1,10 +1,13 @@
 The scripts in this directory have been tested on the w205 Spring AMI
 with anaconda2 python. 
 
+To obtain an API key for NYC's MTA feed, register  here:
+http://datamine.mta.info/user/register.
+
 parse_gtfsrt.py parses GTFS-RT updates into CSV files. 
 
 (Ensure python comes from anaconda2 in your PATH variable. 
-To install protoc under Centos, i.e. w205 instance, follow
+To install protoc under Centos, i.e. w205-class instance, follow
 instructions here: http://tech.yipp.ca/linux/install-google-protocol-buffers-linux/
 To install python bindings, also run "conda install protobuf")
 
@@ -19,18 +22,25 @@ Once you have tested parse_gtfsrt.py works ok:
 1. execute hive -f ./hive_ddl.sql. It creates tables in the default database in hive 
    and assumes the directory structure to be /user/w205/mta/trip_update/ etc.
    
-2. Update the mkdir command in the first line to create an empty folder where intermediate files can be output. This folder is used to store the real time data which is processed by hive, and this is the location where RShiny will read the data from. The current path is "/data/tim/w205/Parse/Output". After the path is updated, execute ./Import_schedule.sh. It imports the stops and schedule data.
+2. Import schedule data onto HDFS. But first, update the mkdir command in the first line in the following
+   shell script, to create an empty folder where intermediate files can be output. This folder is used to
+   store the real time data which is processed by hive, and this is the location where RShiny will read
+   the data from. The current path is "/data/tim/w205/Parse/Output". After the path is updated,
+   execute ./Import_schedule.sh. It imports the stops and schedule data.
 
 3. execute hive -f ./schedule_data_on_read.sql. It reads the stops and schedule data into hive.
 
 4. execute hive -f ./combine_stops_schedule.sql. It combines the stops and schedule data.
 
-5. Make sure to run stations.sh, get_historic_turnstile.sh, hive_schema_on_read.sql and process_turnstile_data.sql in the turnstile folder to read in the turnstile and station data, and to calculate the volume of entries at each stop.
+5. Make sure to run stations.sh, get_historic_turnstile.sh, hive_schema_on_read.sql and process_turnstile_data.sql
+   in the turnstile folder to read in the turnstile and station data, and to calculate the volume of entries at each stop.
 
-6. Update the output path in the last code block in combine_real_time_data.sql, to the same folder that was created in step 2 in the first line of ./Import_schedule.sh. The current path is "/data/tim/w205/Parse/Output" for our demo run, but should be updated to the created empty folder.
+6. Update the output path in the last code block in combine_real_time_data.sql, to the same folder that was created in
+   step 2 in the first line of ./Import_schedule.sh. The current path is "/data/tim/w205/Parse/Output" for our demo
+   run, but should be updated to the created empty folder.
 
 7. Update the paths in the ./gtfsrt_updates.sh file in the following line, to incorporate the updated folder:
-"mv /data/tim/w205/Parse/Output/000000_0 /data/tim/w205/Parse/Output/update.csv"
+   "mv /data/tim/w205/Parse/Output/000000_0 /data/tim/w205/Parse/Output/update.csv"
 
 8. After the export path has been updated, execute ./gtfsrt_updates.sh from the same directory as ./parse_gtfsrt.py
    

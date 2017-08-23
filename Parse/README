@@ -42,7 +42,7 @@ Once you have tested parse_gtfsrt.py works ok:
 7. Update the paths in the ./gtfsrt_updates.sh file in the following line, to incorporate the updated folder:
    "mv /data/tim/w205/Parse/Output/000000_0 /data/tim/w205/Parse/Output/update.csv"
 
-8. After the export path has been updated, execute ./gtfsrt_updates.sh from the same directory as ./parse_gtfsrt.py
+8. After the export path has been updated, execute ./gtfsrt_updates.sh from the same directory as ./parse_gtfsrt.py. Make sure that the commands to read in the schedule data (particularly ./combine_stops_schedule.sql) are executed on the same day. The schedule data readin assumes the schedule is for the current day when it is executed, so it will no longer be accurate to compare with real time updates from a later day.
    
 
 Additional notes on parse_gtfsrt.py:

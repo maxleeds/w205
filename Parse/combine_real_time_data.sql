@@ -84,9 +84,11 @@ SELECT real_time_trip_update.stop_id,
 stop_name,
 stop_latitude,
 stop_longitude,
-CASE WHEN departure_schedule_delay < -80000 THEN departure_schedule_delay + 86400 
+CASE WHEN departure_schedule_delay < -80000 THEN departure_schedule_delay + 86400
+WHEN departure_schedule_delay > 80000 THEN departure_schedule_delay - 86400 
 ELSE departure_schedule_delay END as departure_schedule_delay,
-CASE WHEN arrival_schedule_delay < -80000 THEN arrival_schedule_delay + 86400 
+CASE WHEN arrival_schedule_delay < -80000 THEN arrival_schedule_delay + 86400
+WHEN arrival_schedule_delay > 80000 THEN arrival_schedule_delay - 86400 
 ELSE arrival_schedule_delay END as arrival_schedule_delay,
 position_delay,
 turnstilevolume.volume

@@ -27,7 +27,7 @@ Once you have tested parse_gtfsrt.py works ok:
 
 5. Make sure to run stations.sh, get_historic_turnstile.sh, hive_schema_on_read.sql and process_turnstile_data.sql in the turnstile folder to read in the turnstile and station data, and to calculate the volume of entries at each stop.
 
-6. Update the output path in combine_real_time_data.sql. The current path is 
+6. Update the output path in combine_real_time_data.sql. The current path is "/data/tim/w205/Parse/Output" for our demo run, but should be updated to any empty folder.
 
 7. After the export path has been updated, execute ./gtfsrt_updates.sh from the same directory as ./parse_gtfsrt.py
    
